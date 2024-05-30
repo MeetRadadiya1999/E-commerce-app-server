@@ -8,6 +8,8 @@ dotenv.config()
 const productRoutes = require('./src/routes/products.js')
 
 const app = express()
+const port = process.env.PORT || 4000;
+
 
 app.use(cors({
   origin: 'https://e-commerce-app-sage.vercel.app'
@@ -25,9 +27,10 @@ app.get('/', (req, res) => {
   })
 })
 
-const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, () => {
+app.listen(port, () => {
+  // console.log(`Example app listening on port ${PORT}`)
+
   mongoose
     .connect(process.env.MONGODB_URL)
     .then(() => console.log('Server is running :)'))
