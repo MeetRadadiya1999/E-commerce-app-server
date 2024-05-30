@@ -9,7 +9,9 @@ const productRoutes = require('./src/routes/products.js')
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: 'https://e-commerce-app-sage.vercel.app/',
+}));
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
 app.use(productRoutes)
@@ -22,7 +24,9 @@ app.get('/', (req, res) => {
   })
 })
 
-app.listen(process.env.PORT, () => {
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
   mongoose
     .connect(process.env.MONGODB_URL)
     .then(() => console.log('Server is running :)'))
