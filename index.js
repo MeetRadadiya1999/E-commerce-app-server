@@ -10,9 +10,9 @@ const productRoutes = require('./src/routes/products.js')
 const app = express()
 
 app.use(cors({
-  origin: 'https://e-commerce-app-sage.vercel.app/',
+  origin: 'https://e-commerce-app-sage.vercel.app',
 }));
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(productRoutes)
 
